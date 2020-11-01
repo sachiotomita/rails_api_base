@@ -18,11 +18,11 @@ module App
 
     ActionMailer::Base.smtp_settings = {
       address: 'smtp.sendgrid.net',
-      port: 25,
-      domain: 'www.api.com',
+      port: 587,
+      domain: ENV['SERVER_HOST'],
       authentication: :plain,
-      user_name: ENV['SENDGRID_USERNAME'],
-      password: ENV['SENDGRID_PASSWORD']
+      user_name: 'apikey',
+      password: ENV['SENDGRID_API_KEY']
     }
     config.action_mailer.default_url_options = { host: ENV['SERVER_HOST'],
                                                  port: ENV.fetch('PORT') { 3000 } }
